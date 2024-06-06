@@ -1,0 +1,22 @@
+#include<stdio.h>
+int two_dim_array_access(int* x, int i, int j, int m, int n, int C) {
+    int index = ((m-i) * C + (n-j));
+    //int index = i * n + j;
+    return *(x + index);
+}
+int main() {
+    int A[2][3] = {{1, 2, 3}, {4, 5, 6}};
+
+    //int* p = &A[0][0];
+    int result1 = two_dim_array_access(&A[0][0], 0, 0, 1, 2, 3);
+    int result2 = two_dim_array_access(&A[1][2], 1, 2, 1, 2, 3);
+    int result3 = two_dim_array_access(&A[1][1], 1, 1, 1, 2, 3);
+
+    printf("Result 1: %d\n", result1); // 输出结果应为5
+    printf("Result 3: %d\n", result3); // 输出结果应为5
+
+    return 0;
+}
+
+
+
