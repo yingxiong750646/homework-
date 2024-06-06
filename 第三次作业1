@@ -1,0 +1,62 @@
+#include<stdio.h>
+int main()
+{
+	int i, j;
+	int A[10];
+	int iTemp;
+	int iPose;
+	printf("为数组元素赋值:\n");
+	for (i = 0; i < 10; i++) {
+		printf("A[%d]=", i);
+		scanf_s("%d", &A[i],sizeof(A[i]));
+	}
+	for (i = 0; i < 9; i++) {
+		iTemp = A[i];
+		iPose = i;
+		for (j = i + 1; j < 10; j++) {
+			if (A[j] < iTemp) {
+				iTemp = A[j];
+				iPose = j;
+			}
+		}
+		A[iPose] = A[i];
+		A[i] = iTemp;
+	}
+	printf("排序结果为:\n");
+	for (i = 0; i < 10; i++) {
+		printf("%d\t", A[i]);
+		if (i == 4) {
+			printf("\n");
+		}
+	}
+	printf("\n");
+	return 0;
+}/*
+int main() {
+	int i, j; int A[10]; int iTemp; int iPose;
+	printf("A的值为:\n");
+	for (i = 0; i < 10; i++) {
+		printf("A[%d]=",i);
+		scanf_s("%d", &A[i], sizeof(A[i]));
+
+	}
+	for (i = 0; i < 10; i++) {
+		for (j = 9; j >= i; j--) {
+			if (A[j] < A[j - 1]) {
+				iTemp = A[j];
+				A[j] = A[j - 1];
+				A[j - 1] = iTemp;
+			}
+
+		}
+	}
+	printf("排序结果为:\n");
+	for (i = 0; i < 10; i++) {
+		printf("%d\t", A[i]);
+		if (i == 4) {
+			printf("\n");
+		}
+	}
+	printf("\n");
+	return 0;
+}*/
