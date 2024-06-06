@@ -1,0 +1,43 @@
+#include<stdio.h>
+int i, m, n, k;
+double A[3][4], B[4][5], C[3][5];
+void matrix_multi(double A[3][4], double B[4][5], double C[3][5]) {
+	//C[3][5] = 0;
+	for (m = 0; m < 3; m++) {
+		for (n = 0; n < 5; n++) {
+			C[m][n] = 0;
+			for (k = 0; k < 4; k++) {
+				C[m][n] += A[m][k] * B[k][n];
+			}
+			//C[m][n] = A[m][0] * B[0][n] + A[m][1] * B[1][n] + A[m][2] * B[2][n] + A[m][3] * B[3][n];
+		}
+		//return C[3][5];
+	}
+}
+	int main() {
+		printf("请输入A的值：\n");
+		for (m = 0; m < 3; m++) {
+			for (i = 0; i < 4; i++) {
+				//printf(":");
+				scanf_s("%f ", &A[m][i] , sizeof(A[m][i]));
+				//printf("%lf", A[m][i]);
+			}printf("\n");
+		}
+		printf("请输入B的值:\n");
+		for (i = 0; i < 4; i++) {
+			for (n = 0; n < 5; n++) {
+				scanf_s("%f ", &B[i][n], sizeof(B[i][n]));
+			}printf("\n");
+		}
+		//matrix_multi(A,B,C);
+		//printf("%f", C[3][5]);
+		matrix_multi(A, B, C); // 调用矩阵乘法函数，并传入正确的参数  
+		printf("矩阵C的值为：\n");
+		for (m = 0; m < 3; m++) { // 遍历C数组并打印所有元素  
+			for (n = 0; n < 5; n++) {
+				printf("%f \t", C[m][n]);
+			}
+			printf("\n"); // 每打印完一行后换行  
+		}
+		return 0;
+}
