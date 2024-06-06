@@ -1,0 +1,23 @@
+#pragma once
+extern int f1();
+extern int f2();
+extern int c;
+#include<stdio.h>
+int f1() {
+	int a = 5;
+	printf("%d\n", a);
+}
+int f2() {
+	int b = 6;
+	printf("%d\n", b);
+}
+int c=0;
+#include<stdio.h>
+#include"module.h"
+int main() {
+	f1();
+	f2();
+	c = 5 * 6;
+	printf("%d", c);
+	return 0;
+}
