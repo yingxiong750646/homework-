@@ -1,0 +1,16 @@
+#include<stdio.h>
+int main()
+{
+	int i,m;
+	printf("Please inter a number:");
+	scanf("%d",&i);
+	for(m=2;m <= i,i>=2;m++){
+		if(i%m==0)
+			break;
+	}
+	if(m==i)
+		printf("yes\n");
+	else
+		printf("no\n");
+	return 0;
+}
