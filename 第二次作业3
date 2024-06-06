@@ -1,0 +1,34 @@
+#include<stdio.h>
+void a(char c){
+	printf("******\n*\n*\n******\n*\n*\n******\n");
+}
+void b(char c){
+	printf("******\n*\n*\n******\n*\n*\n*\n");
+}
+void d(char c){
+	printf("*     *\n*   *\n* *\n*\n* *\n*   *\n*     *\n");
+}
+int main(){
+	char e;
+	printf("inter a word E F K\n");
+	scanf("%c",&e);
+	switch(e)
+	{
+		case'E':
+			a(e);
+			break;
+		case'F':
+			b(e);
+			break;
+		case'K':
+			d(e);
+			break;
+		default:
+		printf("error\n");
+		break;
+	}
+	return 0;
+}
+
+
+
