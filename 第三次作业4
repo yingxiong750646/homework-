@@ -1,17 +1,65 @@
-#include<stdio.h>
+#include <stdio.h>  
+#include <string.h>  
+
+void E(void) {
+    printf("*****\n*\n*\n******\n*\n*\n******\n");
+}
+
+void F(void) {
+    printf("*****\n*\n*\n*****\n*\n*\n*\n");
+}
+
+void K(void) {
+    printf("*   *\n*  *\n* *\n*\n* *\n*  *\n*   *\n");
+}
+
+void EF(void) {
+    printf("***** *****\n*     *\n*     *\n***** *****\n*     *\n*     *\n***** *\n");
+}
+
+void EK(void) {
+    printf("***** *   *\n*     *  *\n*     * *\n***** **\n*     * *\n*     *  *\n***** *   *\n");
+}
+
+void FK(void) {
+    printf("***** *   *\n*     *  *\n*     * *\n***** *\n*     * *\n*     *  *\n*     *   *\n");
+}
+
+void EFK(void) {
+    printf("***** ***** *   *\n*     *     *  *\n*     *     * *\n***** ***** *\n*     *     * *\n*     *     *  *\n***** ***** *   *\n");
+}
+
 int main() {
-	int A[2][3] = { {1,2,3},{4,5,6} };
-	printf("A[0][0]的地址为：%p\nA[0][1]的地址为：%p\n", A[0][0],A[0][1]);
-	int b;
-	//int *c;
-	b = &A[0][1]- & A[0][0];
-	printf("%d\n", b);
-	//c = &A[0][1];
-	if (b = 1) {
-		printf("按行排列");
-	}
-	else {
-		printf("按列排列");
-	}
-	return 0;
+    char input[10]; // 假设输入最多为9个字符加上一个null终止符  
+    puts("请输入字符组合用E F K（不超过3个字符）:");
+    if (fgets(input, sizeof(input), stdin) != NULL) {
+        // 去除换行符  
+        input[strcspn(input, "\n")] = 0;
+
+        if (strcmp(input, "E") == 0) {
+            E();
+        }
+        else if (strcmp(input, "F") == 0) {
+            F();
+        }
+        else if (strcmp(input, "K") == 0) {
+            K();
+        }
+        else if (strcmp(input, "EF") == 0) {
+            EF();
+        }
+        else if (strcmp(input, "EK") == 0) {
+            EK();
+        }
+        else if (strcmp(input, "FK") == 0) {
+            FK();
+        }
+        else if (strcmp(input, "EFK") == 0) {
+            EFK();
+        }
+        else {
+            puts("无效的输入！");
+        }
+    }
+    return 0;
 }
