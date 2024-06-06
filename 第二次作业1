@@ -1,0 +1,15 @@
+#include<stdio.h>
+int main()
+{
+	char a;
+	int a1 =sizeof(a);
+	int b=6;
+	int b1=sizeof(b);
+	int c=sizeof(float);
+	int d=sizeof(double);
+	printf("char sizeof is %d bytes\n",a1);
+	printf("int sizeof is %d bytes\n",b1);
+	printf("float sizeof is %d bytes\n",c);
+	printf("double sizeof is %d bytes\n",d);
+	return 0;
+}
