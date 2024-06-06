@@ -1,0 +1,67 @@
+#include<stdio.h>
+#include<assert.h>
+#include<stdlib.h>
+struct Node
+{
+	int data;
+	struct Node* next;
+};
+struct Node* listcreate()
+{
+	struct Node* headNode = (struct Node*)malloc(sizeof(struct Node));
+	assert(headNode);
+	headNode->next = NULL;
+	return headNode;
+}
+struct Node* Nodecreate(int data)
+{
+	struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+	assert(newNode);
+	newNode->next = NULL;
+	newNode->data = data;
+	return newNode;
+}
+void IsertNode(struct Node* headNode, int data)
+{
+	struct Node* newNode = Nodecreate(data);
+	newNode->next = headNode->next;
+	headNode->next = newNode;
+}
+void linkfree(struct Node* headNode)
+{
+	struct Node* tempNode = (struct Node*)malloc(sizeof(struct Node));
+	
+	while (headNode->next != NULL)
+	{
+		tempNode = headNode->next;
+		headNode->next = tempNode->next;
+		free(tempNode);
+
+	}
+}
+void PrintNode(struct Node* headNode)
+{
+	struct Node* pmove;
+	pmove = headNode->next;
+	while (pmove != NULL)
+	{
+		printf("%d\t", pmove->data);
+		pmove = pmove->next;
+	}
+}
+int main() 
+{
+	int i;
+	struct Node* list = listcreate();
+	//struct Node* Nodecreate(i);
+	for (i = 1; i < 6; i++)
+	{
+		IsertNode(list, i);
+
+	}
+	 //PrintNode(list);
+	 printf("\n");
+	 linkfree(list);
+	 PrintNode(list);
+	 return 0;
+}
