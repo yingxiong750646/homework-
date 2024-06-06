@@ -1,0 +1,54 @@
+#include<stdio.h>
+int main() {
+	char A[5][6];
+	//int B[5][6] = 0;
+	//int B = (int)A;
+	int i, j, m, n;
+	int iTemp;
+	char iPose;
+	int sum[5] = { 0 };
+	int index[5] = { 0 };
+	printf("请输入A的值；");
+	for (i = 0; i < 5; i++) {
+		for (j = 0; j < 6; j++) {
+			printf("A[%d][%d]\n", i, j);
+			scanf_s(" %c", &A[i][j],sizeof(char));
+			//printf("%c", A[i][j]);
+		}
+	}
+	for (i = 0; i < 5; i++) {
+		index[i] = i;
+	}
+	//int B[5][6] = (int)A[5][6];
+	for (i = 0; i < 5; i++) {
+		for (j = 0; j < 6; j++) {
+			sum[i] += (int)A[i][j];
+		}
+	}
+	for (i = 1; i < 5; i++) {
+		for (m = 5; m >= i; m--) {
+			if (sum[m] < sum[m - 1]) {
+				iTemp = index[m];
+				index[m] = index[m - 1];
+				index[m - 1] = iTemp;
+			}
+		}
+	}
+	for (i = 0; i < 5; i++) {
+		for (j = 1; j < 6; j++) {
+			for (n = 5; n >= j; n--) {
+				if ((int)A[i][n] < (int)A[i][n - 1]) {
+					iPose = A[i][n];
+					A[i][n] = A[i][n - 1];
+					A[i][n - 1] = iPose;
+				}
+			}
+		}
+	}
+	for (i = 0; i < 5; i++) {
+		for (j = 0; j < 6; j++) {
+			printf("%c\t", A[index[i]][j]);
+		}
+		printf("\n");
+	}
+}
