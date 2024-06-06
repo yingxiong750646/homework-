@@ -1,0 +1,14 @@
+#include<stdio.h>
+//#include<string.h>
+int main() {
+	/*char a[] = "C!YYDS!";
+	long long* b = a;
+
+	printf("%lld", *b);
+*/
+	long long x = 9380227253346627;
+	
+	
+	printf("%s", &x);
+	return 0;
+}
