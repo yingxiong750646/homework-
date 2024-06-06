@@ -1,0 +1,17 @@
+#include<stdio.h>
+int main(){
+	int x,i,m;
+	printf("Please inter a number longer than one:");
+	scanf("%d",&x);
+	for(m=2; m<=x;m++){
+		for(i=2;i<=m;i++){
+			if(m%i==0&& i!=m)
+				break;		
+			//if(m%i==0&& i==m)
+			//if(i==m)
+			else if(m%i==0&& i==m)
+			printf("%d\n",m);
+		}
+	}	
+	return 0;
+}
