@@ -1,0 +1,102 @@
+#pragma once
+int abs(int a) {
+    if (a < 0) {
+        a = (-a);
+    }
+    return a;
+}
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include <time.h>  
+#include <stdbool.h>
+#include<windows.h>
+#include"abs.h"
+#define WIDTH 20
+#define LENGTH 20
+typedef struct {
+    bool is_char; // 标志位，表示当前存储的是字符还是数字  
+    union {
+        char c; // 如果是字符，存储在这里  
+        int i;  // 如果是数字，存储在这里  
+    };
+} CharOrInt;
+void creat_map(int map[WIDTH][LENGTH]) {
+    for (int i = 0; i < WIDTH; i++) {
+        for (int j = 0; j < LENGTH; j++) {
+            map[i][j] =abs(rand()) % 2;
+        }
+    }
+}
+void creat_map_head(int map[WIDTH][LENGTH]) {
+    for (int i = 0; i < WIDTH; i++) {
+        map[0][i] =abs( rand()) % 2;
+    }
+}
+void creat_table_order(int map[WIDTH][LENGTH], CharOrInt table[WIDTH][LENGTH]) {
+    for (int i = 0; i < WIDTH; i++) {
+            for (int j = 0; j < LENGTH; j++) {
+                if (map[i][j] == 0) {
+                    table[i][j].is_char = true;
+                    table[i][j].c = ' ';
+                }
+                else {
+                    table[i][j].is_char = false;
+                    table[i][j].i = abs(rand())%2;
+                }
+            }
+        }
+    }
+void update_table(int map[WIDTH][LENGTH], CharOrInt table[WIDTH][LENGTH]) {
+    for (int i = WIDTH - 1; i > 0; i--) {
+        for (int j = 0; j < LENGTH; j++) {
+            if (map[i - 1][j] == 0) {
+                table[i][j].c = ' ';
+                map[i][j] = map[i - 1][j];
+            }
+            else {
+                table[i][j].i = table[i - 1][j].i;
+                map[i][j] = map[i - 1][j];
+            }
+        }
+    }
+
+    for (int i = 0; i < WIDTH; i++) {
+        if (map[0][i] == 0) {
+            table[0][i].is_char = true;
+            table[0][i].c = ' ';
+        }
+        else {
+            table[0][i].is_char = false;
+            table[0][i].i = abs(rand())%2;
+        }
+    }
+}
+void print_table(int map[WIDTH][LENGTH], CharOrInt table[WIDTH][LENGTH]) {
+    for (int i = 0; i < WIDTH; i++) {
+        for (int j = 0; j < LENGTH; j++) {
+            if (map[i][j] == 0) {
+                printf("%c\t", table[i][j].c);
+            }
+            else { printf("%d\t", table[i][j].i); }
+        }
+        printf("\n");
+    }
+}
+int main() {
+    //system("colorf4");
+    srand((unsigned int)time(NULL));
+    int map[WIDTH][LENGTH] = { 0 };
+    CharOrInt table[WIDTH][LENGTH];
+    creat_map(map);
+    creat_table_order( map,table);
+    print_table(map, table);
+    while (1) {
+        system("cls");
+        creat_map_head(map);
+        update_table(map, table);
+        print_table(map, table);
+        Sleep(80);
+    }
+
+    return 0;
+}
